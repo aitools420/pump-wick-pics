@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+state.json
+state.json.tmp
+server.py
+build_index.py
+fetch_logos.py
+logos_manifest.json
+*.log
