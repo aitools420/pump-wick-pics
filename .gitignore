@@ -3,6 +3,11 @@ __pycache__/
 .env
 state.json
 state.json.tmp
+master.json
+master.json.tmp
+bonded_pool.json
+refresh.py
+migrate_state_to_master.py
 server.py
 build_index.py
 fetch_logos.py
