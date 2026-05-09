@@ -16,8 +16,8 @@
   .filterbox { padding: 10px 20px; border-bottom: 1px solid var(--line); display:flex; gap:12px; align-items:center; }
   .filterbox input { flex:1; max-width: 340px; padding: 6px 10px; background: var(--row); border: 1px solid var(--line); color: var(--fg); border-radius: 4px; font: inherit; font-size: 12px; }
   .filterbox label { font-size: 11px; color: var(--dim); display:flex; align-items:center; gap:4px; }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th, td { padding: 6px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  table { width: auto; border-collapse: collapse; font-size: 12px; }
+  th, td { padding: 4px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { background: var(--row); color: var(--dim); font-weight: 500; cursor: pointer; user-select: none; position: sticky; top: 0; z-index: 1; }
   th:hover { color: var(--fg); }
   th.sorted::after { content: attr(data-arrow); margin-left: 4px; color: var(--accent); }
@@ -29,7 +29,7 @@
   td.age { color: var(--dim); text-align: right; font-variant-numeric: tabular-nums; }
   td.ca a { color: var(--accent); text-decoration: none; font-size: 11px; }
   td.ca a:hover { text-decoration: underline; }
-  td.name { color: var(--dim); max-width: 300px; overflow: hidden; text-overflow: ellipsis; }
+  td.name { color: var(--dim); max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
   td.symlen { color: var(--dim); text-align: center; font-variant-numeric: tabular-nums; }
   td.logo-cell { width: 32px; padding: 4px 0 4px 12px; position: relative; z-index: 0; }
   td.logo-cell:hover { z-index: 1000; }
