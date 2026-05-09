@@ -98,7 +98,7 @@
 <body>
 <header>
   <h1>·</h1>
-  <div class="meta"><span id="rowcount">171</span> rows · 2026-05-09 05:22 UTC</div>
+  <div class="meta"><span id="rowcount">171</span> rows · 2026-05-09 05:23 UTC</div>
   <div class="meta criteria">pump tires launch · bonded · banner paid · abandoned (sub-$500 Mcap) · limited token-token LPs · good meme</div>
 </header>
 <div class="filterbox">
@@ -359,24 +359,27 @@ filt.addEventListener('input', applyFilter);
 hideTtlp.addEventListener('change', applyFilter);
 hideGay.addEventListener('change', applyFilter);
 
-// Sortable headers — only sort the FULL LIST section. SAVED / PICKS / FELL OFF
-// stay curator-ordered.
+// Sortable headers — sort WITHIN each section independently. Section
+// boundaries are preserved (tokens never leak between sections); only the
+// row order within a section changes.
 let lastCol = 3, lastDir = 'asc';
 const mainTbody = document.getElementById('tb-main');
-function mainBodyRows() {
-  return Array.from(mainTbody.querySelectorAll('tr')).filter(r => !r.classList.contains('section'));
-}
+const ALL_TBODIES = ['tb-saved', 'tb-picks', 'tb-main', 'tb-incorrect'].map(id => document.getElementById(id)).filter(Boolean);
 function applySort() {
   const col = lastCol, dir = lastDir;
   const type = document.querySelector(`th[data-col="${col}"]`).dataset.type;
-  const sectionRow = mainTbody.querySelector('tr.section');
-  const sorted = mainBodyRows().sort((a, b) => {
-    const av = a.children[col].dataset.v ?? a.children[col].textContent;
-    const bv = b.children[col].dataset.v ?? b.children[col].textContent;
-    const cmp = type === 'num' ? (parseFloat(av) - parseFloat(bv)) : av.toString().localeCompare(bv.toString());
-    return dir === 'asc' ? cmp : -cmp;
-  });
-  mainTbody.replaceChildren(sectionRow, ...sorted);
+  for (const tb of ALL_TBODIES) {
+    const section = tb.querySelector('tr.section');
+    const rows = Array.from(tb.querySelectorAll('tr')).filter(r => !r.classList.contains('section'));
+    if (!rows.length) continue;
+    rows.sort((a, b) => {
+      const av = a.children[col].dataset.v ?? a.children[col].textContent;
+      const bv = b.children[col].dataset.v ?? b.children[col].textContent;
+      const cmp = type === 'num' ? (parseFloat(av) - parseFloat(bv)) : av.toString().localeCompare(bv.toString());
+      return dir === 'asc' ? cmp : -cmp;
+    });
+    tb.replaceChildren(...(section ? [section] : []), ...rows);
+  }
 }
 
 document.querySelectorAll('th').forEach(th => {
