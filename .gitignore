@@ -13,3 +13,4 @@ build_index.py
 fetch_logos.py
 logos_manifest.json
 *.log
+backfill_lp_version.py
