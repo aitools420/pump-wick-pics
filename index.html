@@ -69,8 +69,7 @@
 <div class="filterbox">
   <input id="filter" type="text" placeholder="filter by ticker, name, address…" autocomplete="off" spellcheck="false"/>
   <label><input type="checkbox" id="hideTtlp"/> hide rows with tt-LP&gt;0</label>
-  <label><input type="checkbox" id="hideLongTicker"/> hide rows with ticker length&gt;5</label>
-  <label><input type="checkbox" id="onlyLen34"/> only show ticker length = 3 or 4</label>
+  <label><input type="checkbox" id="hideGay"/> remove gay tickers</label>
 </div>
 <table id="tbl">
 <thead>
@@ -216,23 +215,21 @@ const allRows = Array.from(tbody.querySelectorAll('tr'));
 // Filter
 const filt = document.getElementById('filter');
 const hideTtlp = document.getElementById('hideTtlp');
-const hideLongTicker = document.getElementById('hideLongTicker');
-const onlyLen34 = document.getElementById('onlyLen34');
+const hideGay = document.getElementById('hideGay');
 const counter = document.getElementById('rowcount');
+const GAY_RE = /^[A-Z0-9]{3,5}$/;
 function applyFilter() {
   const q = filt.value.toLowerCase().trim();
   const hideTt = hideTtlp.checked;
-  const hideLong = hideLongTicker.checked;
-  const only34 = onlyLen34.checked;
+  const gay = hideGay.checked;
   let shown = 0;
   for (const r of allRows) {
     // tt-LP is column 4 now (after logo + ticker + LEN columns)
     const ttv = parseInt(r.children[4].dataset.v) || 0;
     if (hideTt && ttv > 0) { r.style.display = 'none'; continue; }
-    // LEN is column 2
-    const lenv = parseInt(r.children[2].dataset.v) || 0;
-    if (hideLong && lenv > 5) { r.style.display = 'none'; continue; }
-    if (only34 && lenv !== 3 && lenv !== 4) { r.style.display = 'none'; continue; }
+    // ticker text is column 1
+    const ticker = (r.children[1].textContent || '').trim();
+    if (gay && !GAY_RE.test(ticker)) { r.style.display = 'none'; continue; }
     if (!q) { r.style.display = ''; shown++; continue; }
     const txt = r.textContent.toLowerCase();
     if (txt.includes(q)) { r.style.display = ''; shown++; }
@@ -242,8 +239,7 @@ function applyFilter() {
 }
 filt.addEventListener('input', applyFilter);
 hideTtlp.addEventListener('change', applyFilter);
-hideLongTicker.addEventListener('change', applyFilter);
-onlyLen34.addEventListener('change', applyFilter);
+hideGay.addEventListener('change', applyFilter);
 
 // Pin/bottom state — localStorage-only (per-browser). The site is statically
 // hosted (GitHub Pages), so there's no server to share state across visitors.
