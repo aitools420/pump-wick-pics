@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="robots" content="noindex,nofollow"/>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>PUMP GEMS</title>
 <style>
   :root { color-scheme: dark; --bg:#0a0b0e; --fg:#e5e7eb; --dim:#8e909c; --accent:#7dd3fc; --row:#11141a; --line:#1f2330; }
@@ -96,12 +96,18 @@
   footer ul { margin: 0; padding-left: 18px; }
   footer li { margin: 2px 0; }
   footer code { color: var(--accent); font-size: 10px; }
+  /* On phones the fixed-width table overflows the viewport; let it scroll
+     horizontally so the CA / AGE / NAME columns stay reachable. Desktop keeps
+     the original full-width layout (and viewport-sticky headers) untouched. */
+  @media (max-width: 640px) {
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>·</h1>
-  <div class="meta"><span id="rowcount">134</span> rows · 2026-05-14 13:00 UTC</div>
+  <div class="meta"><span id="rowcount">134</span> rows · 2026-06-02 02:09 UTC</div>
   <div class="meta criteria">pump tires launch · bonded · banner paid · abandoned (sub-$500 Mcap) · limited token-token LPs · good meme</div>
 </header>
 <div class="filterbox">
@@ -109,6 +115,7 @@
   <label><input type="checkbox" id="hideGay" checked/> remove gay tickers</label>
   <label><input type="checkbox" id="hideTtlp"/> hide liq webs</label>
 </div>
+<div class="table-wrap">
 <table id="tbl">
 <thead>
 <tr>
@@ -270,6 +277,7 @@
 <tr data-addr="0x55a356151e39e240dccb3d6e21033381bf304cfc"><td class="logo-cell"><img class="logo" src="/logos/0x55a356151e39e240dccb3d6e21033381bf304cfc.webp" alt="" loading="lazy" decoding="async"/></td><td class="sym"><a href="https://dexscreener.com/pulsechain/0x55a356151e39e240dccb3d6e21033381bf304cfc" target="_blank" rel="noopener noreferrer">GASS</a></td><td class="symlen" data-v="4">4</td><td class="mcap" data-v="923.00">$923</td><td class="ttlp" data-v="0">0</td><td class="lpver lpver-v1" data-v="V1">V1</td><td class="ca"><a href="https://dexscreener.com/pulsechain/0x55a356151e39e240dccb3d6e21033381bf304cfc" target="_blank" rel="noopener noreferrer" title="0x55a356151e39e240dccb3d6e21033381bf304cfc">0x55a3…4cfc</a></td><td class="age" data-v="354">354d</td><td class="name">Gasspas</td></tr>
 </tbody>
 </table>
+</div>
 <footer>
 <div class="method-title">METHOD — how this list was built</div>
 <ul>
