@@ -68,6 +68,7 @@
       font-size: 18px; line-height: 1; cursor: pointer; opacity: 0.18;
       transition: opacity 0.18s ease, transform 0.18s ease;
   }
+  #rocket[hidden] { display: none !important; }   /* retired 2026-08-30: the daily pipeline replaces the in-browser re-check */
   #rocket:hover { opacity: 1; transform: scale(1.25) rotate(-12deg); }
   #rocket.running { opacity: 1; animation: rocket-spin 1.4s linear infinite; }
   @keyframes rocket-spin { 0% { transform: translateY(0); } 50% { transform: translateY(-3px); } 100% { transform: translateY(0); } }
@@ -109,7 +110,7 @@
 <body>
 <header>
   <h1>·</h1>
-  <div class="meta"><span id="rowcount">141</span> rows · 2026-08-30 06:53 UTC</div>
+  <div class="meta"><span id="rowcount">141</span> rows · 2026-08-30 07:19 UTC</div>
   <div class="meta criteria">pump tires launch · bonded · DS profile paid · abandoned (sub-55550000 PLS MCap) · limited token-token LPs · good meme</div>
 </header>
 <div class="filterbox">
@@ -249,12 +250,12 @@
 <li>LP filter: ≤ 1 token-token LP per the PulseX subgraph (V1 + V2), dust pairs ignored (excludes wide LP networks).</li>
 <li>FELL OFF is the error bucket: no paid profile, more than 1 token-token LP, or a manual move — never price.</li>
 <li>Vibes filter: subjective "good meme" pass — manual, not scored.</li>
-<li>Auto-check: 🚀 button re-verifies every row via DexScreener (batched), moves fallers into FELL OFF and resurrects recovered ones back to FULL LIST. Tokens in SAVED / PICKS get fresh data but never move.</li>
+<li>Auto-check: the board re-verifies itself daily at 03:15 UTC — full pump.tires walk, every cap read on-chain from the PulseX pool, paid DexScreener profile + logo required — and republishes. The refresh time is shown above the table. (The old 🚀 in-browser re-check is retired; DexScreener no longer serves data for most of these coins.)</li>
 <li>Discovery: <code>python3 refresh.py</code> locally — refreshes the bonded pool, verifies all tokens, and pulls in any new bonded tokens that meet criteria. Add <code>--commit</code> to push.</li>
 <li>Source of truth: <code>master.json</code> (gitignored) — every token ever seen; sections only move, tokens never get deleted.</li>
 </ul>
 </footer>
-<button id="rocket" type="button" aria-label="re-check criteria" title="re-check criteria">🚀</button>
+<button id="rocket" type="button" aria-label="re-check criteria" title="re-check criteria" hidden>🚀</button>
 <div id="rocket-panel">
   <span class="rp-close" id="rp-close">×</span>
   <div class="rp-title">criteria re-check</div>
