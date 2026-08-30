@@ -14,3 +14,6 @@ fetch_logos.py
 logos_manifest.json
 *.log
 backfill_lp_version.py
+logs/
+daily-refresh.sh
+logos_ds_only.py
