@@ -111,8 +111,8 @@
 <body>
 <header>
   <h1>·</h1>
-  <div class="meta"><span id="rowcount">141</span> rows · 2026-08-31 09:15 UTC</div>
-  <div class="meta criteria">pump tires graduate · paid DexScreener profile + logo · sub-55550000 PLS MCap (on-chain) · ≤ 1 real token-token LP · good meme · mcaps repriced 6-hourly · full sweep daily</div>
+  <div class="meta"><span id="rowcount">141</span> rows · 2026-08-31 09:41 UTC</div>
+  <div class="meta criteria">pump tires graduate · paid DexScreener profile + logo · sub-55.55M PLS MCap (on-chain) · ≤ 1 real token-token LP · good meme · mcaps repriced 6-hourly · full sweep daily</div>
 </header>
 <div class="filterbox">
   <input id="filter" type="text" placeholder="filter by ticker, name, address…" autocomplete="off" spellcheck="false"/>
@@ -241,7 +241,7 @@
 <ul>
 <li>Source: every coin that graduated (bonded) off <code>pump.tires</code> — the full launchpad walk, ~1,000 graduates out of ~37,000 launches, re-scanned daily.</li>
 <li>Paid filter: the coin has a paid DexScreener profile, proven two ways — DexScreener's own order record (<code>/orders/v1</code>, approval date in the PAID column) AND a logo served by DexScreener's CDN. A coin failing either is not in the set and is not shown anywhere.</li>
-<li>Mcap: FDV = total supply × price, read on-chain from the coin's deepest PulseX pool (V1 or V2) and cross-checked against pump.tires. Cutoff <code>sub-55550000 PLS MCap</code> (≈ $626 today) — fixed in PLS so it never drifts with the PLS price. A FULL LIST coin priced over the cutoff is hidden until it comes back under it (50 hidden right now).</li>
+<li>Mcap: FDV = total supply × price, read on-chain from the coin's deepest PulseX pool (V1 or V2) and cross-checked against pump.tires. Cutoff <code>sub-55.55M PLS MCap</code> (≈ $626 today) — fixed in PLS so it never drifts with the PLS price. A FULL LIST coin priced over the cutoff is hidden until it comes back under it (50 hidden right now).</li>
 <li>SAVED: a coin that gets revived — FULL LIST or TANGENT&#x27;S PICKS → SAVED when its FDV reaches <code>555,500,000 PLS</code> (≈ $6,258 today); back to FULL LIST only under the cutoff. Nothing moves in between.</li>
 <li>LP filter: at most 1 real token-token pool (PulseX V1 + V2, from the subgraph). A pool counts only if it holds ≥ 5% of the coin's own cap — dust pools are ignored.</li>
 <li>FELL OFF is the error bucket only: more than one real token-token pool, or a manual move. Price never puts a coin here.</li>
